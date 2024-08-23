@@ -225,7 +225,7 @@ const Quiz = () => {
   return (
     <div style={{ width: '80%', margin: '0 auto', textAlign: 'center' }}>
       
-      {/* Overall Progress Bar */}
+
       <div style={{
         position: 'relative',
         width: '100%',
@@ -255,38 +255,49 @@ const Quiz = () => {
 
       <h2>{currentQuestion.question}</h2>
 
-      {/* Star Rating based on Difficulty */}
+
       {renderStars(currentQuestion.difficulty)}
 
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {allAnswers.map((answer, index) => (
-          <li key={index} style={{ margin: '10px 0' }}>
-            <button 
-              onClick={() => handleAnswerClick(answer)} 
-              disabled={hasAnswered}
-              style={{
-                padding: '10px 20px',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                backgroundColor: hasAnswered 
-                  ? answer === currentQuestion.correct_answer 
-                    ? 'green' 
-                    : answer === selectedAnswer 
-                      ? 'red' 
-                      : '' 
-                  : '',
-                color: hasAnswered && (answer === currentQuestion.correct_answer || answer === selectedAnswer) ? 'white' : '',
-                border: '1px solid #ccc',
-                width: '100%',
-                maxWidth: '400px',
-                fontSize: '16px',
-              }}
-            >
-              {answer}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <ul style={{ 
+  listStyleType: 'none', 
+  display: 'inline-flex', 
+  flexWrap: 'wrap', 
+  gap: '10px' 
+}}>
+  {allAnswers.map((answer, index) => (
+    <li key={index} style={{ 
+      width: '45%', // Adjust the width to fit two items per row
+      display: 'flex',
+      justifyContent: 'center' 
+    }}>
+      <button 
+        onClick={() => handleAnswerClick(answer)} 
+        disabled={hasAnswered}
+        style={{
+          padding: '10px 20px',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          backgroundColor: hasAnswered 
+            ? answer === currentQuestion.correct_answer 
+              ? 'green' 
+              : answer === selectedAnswer 
+                ? 'red' 
+                : '' 
+            : '',
+          color: hasAnswered && (answer === currentQuestion.correct_answer || answer === selectedAnswer) ? 'white' : '',
+          border: '1px solid #ccc',
+          width: '100%', // Ensures the button fills the width of the list item
+          maxWidth: '200px', // Set a fixed max width for all buttons
+          fontSize: '16px',
+          textAlign: 'center',
+          gap: '5px', // Centers the text within the button
+        }}
+      >
+        {answer}
+      </button>
+    </li>
+  ))}
+</ul>
 
 
       {hasAnswered && (
