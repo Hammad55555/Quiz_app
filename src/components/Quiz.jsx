@@ -259,14 +259,15 @@ const Quiz = () => {
       {renderStars(currentQuestion.difficulty)}
 
       <ul style={{ 
+
   listStyleType: 'none', 
   display: 'inline-flex', 
   flexWrap: 'wrap', 
-  gap: '10px' 
+  gap: '10px'  
 }}>
   {allAnswers.map((answer, index) => (
     <li key={index} style={{ 
-      width: '45%', // Adjust the width to fit two items per row
+      width: '45%', 
       display: 'flex',
       justifyContent: 'center' 
     }}>
@@ -286,11 +287,11 @@ const Quiz = () => {
             : '',
           color: hasAnswered && (answer === currentQuestion.correct_answer || answer === selectedAnswer) ? 'white' : '',
           border: '1px solid #ccc',
-          width: '100%', // Ensures the button fills the width of the list item
-          maxWidth: '200px', // Set a fixed max width for all buttons
+          width: '100%', 
+          maxWidth: '200px',
           fontSize: '16px',
           textAlign: 'center',
-          gap: '5px', // Centers the text within the button
+          gap: '5px', 
         }}
       >
         {answer}
